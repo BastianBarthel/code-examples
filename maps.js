@@ -16,3 +16,12 @@ for (const [key, value] of question) {
 }
 const answer = Number(prompt("Your answer:"));
 console.log(question.get(question.get("correct") === answer));
+
+// Convert Object to Map
+let openingHours = { open: 8, close: 20 };
+const hoursMap = new Map(Object.entries(openingHours));
+
+// Convert Map to Array
+console.log([...question]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
