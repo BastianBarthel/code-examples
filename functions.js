@@ -49,3 +49,28 @@ const greeterHello = greet("Hello");
 greeterHello("Bastian");
 
 greet("Hey")("Jude");
+
+// The Call and Apply Methods
+const lufthansa = {
+  airline: "Lufthansa",
+  iataCode: "LH",
+  bookings: [],
+
+  book(flightNum, name) {
+    `${name} booked on ${this.airline} flight ${this.iataCode}${flightNum}`;
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(404, "John Lennon");
+
+const book = lufthansa.book;
+
+// - Call Method
+book.call(lufthansa, 404, "George Harrison");
+
+// - Apply Method
+const flightData = [404, "Ringo Starr"];
+book.apply(lufthansa, flightData);
+
+book.call(lufthansa, ...flightData); // apply is kind of obsolete, because you can just do it like this
