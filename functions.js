@@ -62,10 +62,30 @@ const lufthansa = {
   },
 };
 
+const eurowings = {
+  airline: "Eurowings",
+  iataCode: "EW",
+  bookings: [],
+};
+
 lufthansa.book(404, "John Lennon");
 
 const book = lufthansa.book;
-book.call(lufthansa, 404, "George Harrison");
+book.call(eurowings, 404, "George Harrison");
 
 const flightData = [404, "Ringo Starr"];
-book.call(lufthansa, ...flightData);
+book.call(eurowings, ...flightData);
+
+// The Bind Method
+const bookEW = book.bind(eurowings);
+bookEW(404, "Paul McCartney");
+
+// Partial Application
+const bookEW404 = book.bind(eurowings, 404);
+bookEW404("Brian Epstein");
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
