@@ -1,6 +1,6 @@
 "use strict";
 
-// default parameters (before ES6 this would have been done with short circuiting)
+// default parameters
 const bookings = [];
 
 const createBooking = function (
@@ -89,3 +89,8 @@ console.log(addTax(0.1, 200));
 
 const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(100));
+
+// Immediately Invoked Function Expressions (IIFE)
+(function () {
+  console.log("This will only run once");
+})();
