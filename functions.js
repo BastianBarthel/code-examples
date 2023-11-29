@@ -94,3 +94,17 @@ console.log(addVAT(100));
 (function () {
   console.log("This will only run once");
 })();
+
+// A function has access to the variable environment (VE) of the execution context in which it was created
+// Closure: VE attached to the function, exactly as it was at the time and place the function was created
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(passengerCount);
+  };
+};
+
+const booker = secureBooking();
+booker();
+console.dir(booker);
